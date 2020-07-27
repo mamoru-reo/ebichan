@@ -1,0 +1,499 @@
+@charset "utf-8";
+
+:root{
+	/* カラー */
+	--main-color:#37ab9d;
+	--main-light:#d8faea;
+	--sub-green:#4dc0b2;
+	--sub-yellow:#ffc042;
+	--main-black:#586365;
+	--sub-gray:#859295;
+	--sub-dark:#303637;
+	--btn-font-color:#fff;
+	--disabled-gray:#c6ccce;
+	
+	--denger-red:#ff828a;
+	
+	/* デコレーション数値 */
+	--deco-radius:0.25em;
+	
+	/* レイアウト数値 */
+	--header-height:30px;
+	--side-menu-width:12em;
+	--mate-sett-height:230px;
+}
+
+/*リンク*/
+a{
+	color:var(--main-color);
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+
+/* ボタン */
+a.btn,
+span.btn,
+button{
+	display:inline-block;
+	border-radius:var(--deco-radius);
+	padding:0.5em;
+	min-width:3em;
+	background:var(--main-color);
+	color:var(--btn-font-color);
+	border:var(--main-color) solid 2px;
+	text-align:center;
+}
+
+a.btn.denger,
+button.denger{
+	background:var(--denger-red);
+	border-color:var(--denger-red);
+}
+
+a.btn.yellow,
+button.yellow{
+	background:var(--sub-yellow);
+	border-color:var(--sub-yellow);
+}
+
+
+
+
+a.btn:hover,
+button:hover{
+	text-decoration:none;
+	background:var(--btn-font-color);
+	color:var(--main-color);
+}
+
+a.btn.denger:hover, button.denger:hover{ color:var(--denger-red); }
+a.btn.yellow:hover, button.yellow:hover{ color:var(--sub-yellow); }
+
+
+span.btn,
+button:disabled{
+	background:var(--disabled-gray);
+	border-color:var(--disabled-gray);
+	color:var(--sub-gray);
+}
+span.btn:hover,
+button:disabled:hover{
+	color:var(--sub-gray);
+}
+
+
+/* ふぉーむの登録ボタン */
+.formsend{
+	position:absolute;
+	width:calc(100% - var(--side-menu-width));
+	bottom:0; right:0;
+	text-align:center;
+	background:rgba(0, 0, 0, 0.3);
+	margin-bottom:0;
+	padding:20px;
+}
+.formsend button,
+.formsend a.btn{
+	min-width:10em;
+	margin:0 0.25em;
+}
+
+
+
+
+
+/* フォーム部品 */
+input[type="text"],
+input[type="password"],
+.selectbox,
+textarea{
+	border:var(--disabled-gray) solid 1px;
+	padding:0.4em;
+	border-radius:var(--deco-radius);
+	width:100%;
+	display:inline-block;
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+	line-height:1.5em;
+	vertical-align: 0.05em;
+	margin-right:0.25em;
+}
+
+/* セレクトぼっくす */
+.selectbox:before{
+	font-family:'Font Awesome 5 Free';
+	font-weight: 900;
+	content:'\f0dd';
+	padding:0 0.5em;
+	position:absolute;
+	display:block;
+	right:0; top:0; bottom:0;
+	margin-top:auto; margin-bottom:auto;
+	vertical-align:middle;
+	line-height: 0.7em;
+	height:1em;
+	
+}
+
+select option{
+	padding:0.5em;
+}
+
+/* タグ */
+span.tag{
+	display:inline-block;
+	text-align:center;
+	padding:0.3em 0.5em;
+	min-width:5em;
+	border-radius:1.5em;
+	line-height:1em;
+	background:var(--sub-green);
+	font-size:80%;
+	color:#fff;
+}
+
+
+/* 装飾テキスト */
+
+small{
+	font-size:80%;
+}
+
+
+
+/* たいとる設定 */
+h1,h2,h3,h4,h5{
+	color:var(--sub-dark);
+}
+
+
+h1{
+	font-size:200%;
+	margin-bottom:10px;
+}
+h1 + .subtitle{
+	color:var(--sub-green);
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+h2{
+	font-size:110%;
+	border-bottom:var(--main-color) solid 3px;
+	padding:10px 0;
+	margin-bottom:10px;
+}
+
+/* テーブル設定 */
+
+table{
+	width:100%;
+}
+
+table th,
+table td{
+	padding:0.25em;
+	vertical-align:middle;
+}
+
+
+/* データ一覧 */
+.datafield{
+	border:var(--disabled-gray) solid 1px;
+	border-radius:var(--deco-radius);
+	overflow-x:scroll;
+	width:100%;
+}
+.datafield table th{
+	background:var(--main-light);
+	min-width:1.5em;
+}
+
+.datafield table tr:nth-child(even) td{
+	background:#eff5f5;
+}
+
+.datafield table tr th,
+.datafield table tr td{
+	text-align:center;
+	border-bottom:var(--disabled-gray) solid 1px;
+}
+
+.datafield table tr th.left,
+.datafield table tr td.left{
+	text-align:left;
+}
+.datafield table tr th.right,
+.datafield table tr td.right{
+	text-align:right;
+}
+
+
+/* ページャー */
+.pager span,
+.pager a{
+	min-width:2em;
+	min-height:2em;
+	text-align:center;
+	display:inline-block;
+	line-height:2em;
+	background:var(--main-light);
+	border:var(--main-light) solid 2px;
+}
+
+.pager a:hover{
+	text-decoration:none;
+}
+
+.pager a:hover,
+.pager .current{
+	background:var(--btn-font-color);
+	color:var(--main-color);
+}
+
+
+/* 入力フォーム */
+.formtable .row{
+	display:flex;
+}
+.formtable .row div{
+	margin-bottom:0px;
+}
+
+.formtable .row .clm{
+	flex-grow: 1;
+	display:flex;
+	align-items:center;
+	border-bottom:var(--disabled-gray) solid 1px;
+	margin-right:10px;
+	margin-left:10px;
+}
+
+.formtable .row .clm div{
+	padding:10px;
+}
+
+.formtable .row .clm .ttl{
+	min-width:10em;
+}
+
+
+/* セレクトぼっくすレイアウト */
+.formtable .row .clm div.selectbox{
+	position:relative;
+	padding-right:1.5em;
+}
+
+
+
+/* 複数のチェック項目 */
+.formtable .row .clm div.lablesbox{
+	display:flex;
+	flex-wrap:wrap;
+	flex-grow: 1;
+	margin-bottom: -1em;
+}
+
+.lablesbox .item{
+	margin-right:1em;
+	margin-bottom:1em;
+}
+
+.lablesbox .item input:checked + label{
+	color:var(--main-color);
+	font-weight:bold;
+}
+
+.lablesbox .item input:disabled + label{
+	color:var(--disabled-gray);
+}
+
+
+
+/* ページれいあうと */
+
+body{
+	color:var(--main-black);
+}
+
+header{
+	height:var(--header-height);
+	background:var(--main-color);
+	color:#fff;
+}
+
+main{
+	display:flex;
+	height:calc(100vh - var(--header-height) - var(--header-height));
+}
+
+main nav{
+	width:12em;
+	max-width:12em;
+	min-width:12em;
+	border-right:var(--sub-gray) solid 1px;
+}
+main > section{
+	width:100%;
+	padding:10px;
+	overflow-y:scroll;
+}
+
+section{
+	margin-bottom:50px;
+}
+div{
+	margin-bottom:30px;
+}
+
+/* サイドメニュー */
+.sidemenu > ul{
+	width:100%;
+	
+}
+.sidemenu ul > li > a,
+.sidemenu ul > li > p{
+	display:block;
+	padding:0.8em 0.5em;
+}
+
+
+.sidemenu ul > li > a:hover{
+	background:var(--main-color);
+	color:#fff;
+}
+
+
+.sidemenu .groupitem ul > li a{
+	padding-left:2.5em;
+}
+
+
+
+/* テーブルの中のhideメニュー */
+.have_hidden_menu > .hidden_menu{
+	visibility:hidden;
+	margin-bottom:0;
+	margin-top:0.5em;
+	font-size:90%;
+}
+
+.have_hidden_menu:hover > .hidden_menu{
+	visibility:visible;
+}
+
+.objects > div{
+	margin-bottom:10px;
+}
+
+
+/* 素材アップロード画面 */
+.material_form{
+	height:calc(100vh - var(--header-height));
+	margin:0;
+	overflow:hidden;
+}
+.materials div{
+	margin-bottom:15px;
+}
+.materials section{
+	margin-bottom:10px;
+}
+.materials .item_upload{
+	overflow-y:scroll;
+	width:70%;
+	height:calc(100vh - var(--mate-sett-height) - var(--header-height) - 10em);
+}
+
+.materias_settings{
+	height:var(--mate-sett-height):
+}
+.materias_settings .row{
+	margin-bottom:5px;
+}
+
+.material_items{
+	display:flex;
+}
+.material_items .preview{
+	width:30%;
+	padding:10px;
+	background:var(--disabled-gray);
+}
+.material_items .preview canvas{
+	width:100%;
+	height:auto;
+}
+
+.text_inputer p,
+.color_sumpler p{
+	display:flex;
+	margin-bottom:10px;
+}
+
+.color_sumpler p span{
+	font-size:140%;
+	margin-right:0.5em;
+}
+
+/* 画像アップロードエリア */
+label.img_uploader{
+	display:block;
+	background:var(--sub-gray);
+	color:var(--sub-dark);
+	position:relative;
+	min-height:100px;
+	padding-bottom:20px;
+}
+
+label.img_uploader input[type="file"]{
+	position:absolute;
+	top:0; left:0;
+	z-index:-99999;
+}
+
+.img_uploader p{
+	font-size:80%;
+	text-align:center;
+	position:absolute;
+	bottom:0; right:0; left:0;
+	margin-left:auto; margin-right:auto;
+	padding:0.25em;
+}
+/* アップロードした画像の一覧 */
+.up_image_list{
+	width:100%;
+	display:flex;
+	flex-wrap:wrap;
+}
+.up_image_list div{
+	display:inline-block;
+	max-width:100px;
+	padding:10px;
+	position:relative;
+}
+
+.up_image_list div img{
+	width:100%;
+	height:auto;
+}
+.up_image_list div .image_overray{
+	visibility:hidden;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0; bottom:0; right:0; left:0;
+	margin:auto;
+	background:rgba(0, 0, 0, 0.3);
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.up_image_list div:hover .image_overray{
+	visibility:visible;
+}

@@ -1,0 +1,21 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <script src="https://kit.fontawesome.com/b6ad2a1f1b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/destyle.css' %}" />
+
+</head>
+
+<body>
+    <header>
+        <p>ここにlogo</p>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

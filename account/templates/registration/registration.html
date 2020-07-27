@@ -1,0 +1,76 @@
+{% extends 'registration/base.html' %}
+{% block content %}
+<main class="form-register">
+    <!-- こっから開始 -->
+    <div class="form-wrapper">
+        <h1>新規登録</h1>
+        {% if err %}
+        <p class="error">{{err}}</p>
+        {% endif %}
+        <form action="{% url 'registration' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-item">
+                {{registration_form.username}}
+                {% if username_err %}
+                <p class="error">{{username_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.address}}
+                {% if address_err %}
+                <p class="error">{{address_err}}</p>
+                {% endif %}
+                <button>郵便番号から検索</button>
+            </div>
+            <div class="form-item">
+                <p id="prefs"> {{registration_form.pref}}</p>
+                {% if pref_err %}
+                <p class="error">{{pref_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.city}}
+                {% if city_err %}
+                <p class="error">{{city_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.city2}}
+                {% if city2_err %}
+                <p class="error">{{city2_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.tell}}
+                {% if tell_err %}
+                <p class="error">{{tell_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.email}}
+                {% if email_err %}
+                <p class="error">{{email_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.password}}
+                {% if password_err %}
+                <p class="error">{{password_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
+                {{registration_form.password2}}
+                {% if password2_err %}
+                <p class="error">{{password2_err}}</p>
+                {% endif %}
+            </div>
+            <div class="button-panel">
+                <input type="submit" class="button btn-flat-border" title="Sign In" value="新規登録" formnovalidate></input>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p><a href="{% url 'login' %}">ログイン</a></p>
+        </div>
+    </div>
+</main>
+{% endblock %}

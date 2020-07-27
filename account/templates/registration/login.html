@@ -1,0 +1,25 @@
+{% extends 'registration/base.html' %}
+{% block content %}
+<main class="form-login">
+    <!-- こっから開始 -->
+    <div class="form-wrapper">
+        <h1>ログイン</h1>
+        <form action="{% url 'login' %}" method="POST" class="form-signin">
+            {% csrf_token %}
+            <div class="form-item">
+                {{form.username}}
+            </div>
+            <div class="form-item">
+                {{form.password}}
+            </div>
+            <div class="button-panel">
+                <input type="submit" class="button btn-flat-border" title="Sign In" value="ログイン"></input>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p><a href="{% url 'registration' %}">新規登録</a></p>
+            <p><a href="#">パスワード再発行</a></p>
+        </div>
+    </div>
+</main>
+{% endblock %}

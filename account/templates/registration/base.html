@@ -16,26 +16,9 @@
     </header>
     {% block content %}
     {% endblock %}
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $('button').on('click', function () {
-            $.ajax({
-                url: "{% url 'city' %}",
-                type: "POST",
-                context: $(this),
-                data: {
-                    address: $('#address').val(),
-                    csrfmiddlewaretoken: '{{ csrf_token }}',
-                },
-            }).done(function (html) {
-                $('#prefs').html(html);
-                $('#city').css({ "display": "none" }).removeAttr("name");
-
-            }).fail(function (html) {
-                alert("郵便番号を入力してください"); //通信失敗時
-            });
-
-        });
     </script>
 </body>
 

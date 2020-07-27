@@ -37,12 +37,3 @@ class User(AbstractUser):
 
   class Meta(AbstractUser.Meta):
     swappable = 'AUTH_USER_MODEL'
-
-
-class City(models.Model):
-  address_cd = models.TextField()
-  address = models.CharField(max_length=8)
-  pref = models.CharField(max_length=200)
-  city = models.CharField(max_length=200)
-  city2 = models.CharField(max_length=200)
-  city3 = models.CharField(max_length=200)

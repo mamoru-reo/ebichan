@@ -24,6 +24,7 @@ body {
   margin: 3em auto;
   padding: 0 1em;
   max-width: 370px;
+  width: 400px;
 }
 
 h1 {
@@ -117,7 +118,7 @@ form {
 }
 
 .form-register {
-  height: 1000px;
+  height: 900px;
 }
 
 .form-login {

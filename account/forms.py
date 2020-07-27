@@ -8,16 +8,16 @@ class RegistrationForm(forms.Form):
   username = forms.CharField(widget=forms.TextInput(
       attrs={'placeholder': 'ユーザネーム'}))
   address = forms.CharField(max_length=8, widget=forms.TextInput(
-      attrs={'placeholder': '郵便番号(「-」ハイフン含)', 'id': 'address', 'required': "required"})
+      attrs={'placeholder': '郵便番号(「-」ハイフン含)', 'class': 'p-postal-code', 'size': '8', 'maxlength': '8', 'required': "required"})
   )
   pref = forms.CharField(max_length=40, widget=forms.TextInput(
-      attrs={'placeholder': '都道府県', 'id': 'pref', 'required': "required"})
+      attrs={'placeholder': '都道府県', 'class': 'p-region', 'required': "required"})
   )
   city = forms.CharField(max_length=40, widget=forms.TextInput(
-      attrs={'placeholder': '住所１', 'id': 'city', 'required': "required"})
+      attrs={'placeholder': '住所１', 'class': 'p-locality', 'required': "required"})
   )
   city2 = forms.CharField(max_length=40, widget=forms.TextInput(
-      attrs={'placeholder': '住所２(番地・マンション名)', 'id': 'city2', 'required': "required"})
+      attrs={'placeholder': '住所２(番地・マンション名)', 'class': 'p-street-address', 'required': "required"})
   )
   tell = forms.RegexField(regex=r'^\d{2,4}-\d{2,4}-\d{4}$', widget=forms.TextInput(
       attrs={'placeholder': '電話番号(「-」ハイフン含)'}))

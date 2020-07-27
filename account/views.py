@@ -6,20 +6,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RegistrationForm, LoginForm
 # ログインパスを通す場合に必要
 from django.contrib.auth.decorators import login_required
-from .models import City, Campany, User
+from .models import Campany, User
 import re
 
 
 # Create your views here.
-
-
-def city(request):
-  address = request.POST.get('address')
-  places = City.objects.filter(address=address)
-  for place in places:
-    City.objects.filter(pref=place)
-    # print(pref.pref)
-  return render(request, 'registration/city.html', {'place': place})
 
 
 class Login(LoginView):

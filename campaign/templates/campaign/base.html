@@ -18,12 +18,12 @@
         <nav>
             <div class="sidemenu">
                 <ul>
-                    <li class="linkitem"><a href="javascript:void(0)" id="campaign"><i class="fas fa-folder"></i> キャンペーン</a></li>
+                    <li class="linkitem"><a href="{% url 'campaign_list' %}"><i class="fas fa-folder"></i> キャンペーン</a></li>
                     <li class="groupitem">
                         <p><i class="fas fa-folder"></i> キャンペーン管理</p>
                         <ul>
-                            <li><a href="javascript:void(0)" class="group_list"><i class="fas fa-list"></i> 一覧</a></li>
-                            <li><a href="javascript:void(0)" class="campaign_form"><i class="fas fa-plus"></i> 新規作成</a></li>
+                            <li><a href="{% url 'campaign_group' %}"><i class="fas fa-list"></i> 一覧</a></li>
+                            <li><a href="{% url 'campaign_form' %}"><i class="fas fa-plus"></i> 新規作成</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -33,51 +33,7 @@
         {% endblock %}
 
     </main>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        // キャンペーン一覧の表示
-        $(document).on('click', '#campaign', function () {
-            location.reload();
-        })
-        // 広告グループの表示
-        $(document).on('click', '.group_list', function () {
-            var csrf = $('input[name=_csrfToken]').val()
-            $.ajax({
-                url: "{% url 'campaign_group' %}",
-                type: 'POST',
-                context: $(this),
-                data: {
-                    csrfmiddlewaretoken: '{{ csrf_token }}',
 
-                },
-            })
-                .done(function (html) {
-                    $('#campaign_list').html(html)
-                })
-                .fail(function (html) {
-                    alert('失敗')
-                })
-        })
-        // 広告登録の表示
-        $(document).on('click', '.campaign_form', function () {
-            var csrf = $('input[name=_csrfToken]').val()
-            $.ajax({
-                url: "{% url 'campaign_form' %}",
-                type: 'POST',
-                context: $(this),
-                data: {
-                    csrfmiddlewaretoken: '{{ csrf_token }}',
-
-                },
-            })
-                .done(function (html) {
-                    $('#campaign_list').html(html)
-                })
-                .fail(function (html) {
-                    alert('失敗')
-                })
-        })
-    </script>
 </body>
 
 </html>

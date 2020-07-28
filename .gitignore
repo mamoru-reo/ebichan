@@ -2,4 +2,9 @@ account/migrations/*
 campaign/migrations/*
 makemovie/migrations/*
 master/migrations/*
+account/__pycache__/*
+campaign/__pycache__/*
+makemovie/__pycache__/*
+master/__pycache__/*
 site_settings/settings.py
+site_settings/__pycache__/*

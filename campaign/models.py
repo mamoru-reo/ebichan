@@ -8,8 +8,9 @@ import uuid
 
 
 class Campaign(models.Model):
-  budget = models.IntegerField()  # 予算
-  purpose = models.TextField()  # 目的
+  name = models.TextField(blank=True)  #キャンペーン名
+  budget = models.IntegerField(blank=True)  # 予算
+  purpose = models.TextField(blank=True)  # 目的
   created = models.DateTimeField(default=timezone.now)
   modified = models.DateTimeField(blank=True, null=True)
   campany = models.ForeignKey(

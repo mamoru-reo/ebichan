@@ -1,5 +1,5 @@
-account/migrations/
-campaign/migrations/
-makemovie/migrations/
-master/migrations/
+account/migrations/*
+campaign/migrations/*
+makemovie/migrations/*
+master/migrations/*
 site_settings/settings.py

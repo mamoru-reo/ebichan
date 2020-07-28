@@ -1,74 +1,58 @@
-{% extends 'registration/base.html' %}
+{% extends 'campaign/base.html' %}
 {% block content %}
-<main>
-	<nav>
-		<div class="sidemenu">
-			<ul>
-				<li class="linkitem"><a href="javascript:void(0)"><i class="fas fa-folder"></i> キャンペーン</a></li>
-				<li class="groupitem">
-					<p><i class="fas fa-folder"></i> キャンペーン管理</p>
-					<ul>
-						<li><a href="javascript:void(0)"><i class="fas fa-list"></i> 一覧</a></li>
-						<li><a href="javascript:void(0)"><i class="fas fa-plus"></i> 新規作成</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<section id="campaign_list">
+	<h1>キャンペーン一覧</h1>
 	<section>
-		<h1>キャンペーン一覧</h1>
-		<section>
-			<div class="all_sousa"><a href="javascript:void(0)" class="btn yellow"><i class="fas fa-plus"></i> 新規作成</a></div>
-		</section>
-		<section class="objects">
-			<div class="pager">
-				<a href="javascript:void(0)" class=""><i class="fas fa-caret-left"></i></a>
-				<a href="javascript:void(0)" class="">1</a>
-				<a href="javascript:void(0)" class="">2</a>
-				<a href="javascript:void(0)" class=" current">3</a>
-				<a href="javascript:void(0)" class="">4</a>
-				<a href="javascript:void(0)" class="">5</a>
-				<a href="javascript:void(0)" class="">6</a>
-				<a href="javascript:void(0)" class="">7</a>
-				<a href="javascript:void(0)" class="">8</a>
-				<a href="javascript:void(0)" class="">9</a>
-				<a href="javascript:void(0)" class="">10</a>
-				<a href="javascript:void(0)" class=""><i class="fas fa-caret-right"></i></a>
-			</div>
-			<div class="datafield">
-				<table>
-					<thead>
-						<th></th>
-						<th>キャンペーン</th>
-						<th>配信</th>
-						<th></th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td class="have_hidden_menu left">
-								<a href="javascript:void(0)">2020_04_webマーケ相談会_リード獲得</a>
-								<div class="hidden_menu"><a href="javascript:void(0)"><i class="fas fa-pen"></i> 編集</a></div>
-							</td>
-							<td><span class="tag">配信中</span><br /><small>2020/04/05～</small></td>
-							<td><span title="配信中は削除できません" class="btn"><i class="fas fa-trash"></i> 削除</span></td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td class="have_hidden_menu left">
-								<a href="javascript:void(0)">2020_04_webマーケ相談会_プロモーション資料DL</a>
-								<div class="hidden_menu"><a href="javascript:void(0)"><i class="fas fa-pen"></i> 編集</a></div>
-							</td>
-							<td><span class="tag">配信停止中</span></td>
-							<td>
-								<a href="javascript:void(0)" class="btn denger"><i class="fas fa-trash"></i> 削除</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="pager">ここにページャーがほしい</div>
-		</section>
+		<div class="all_sousa"><a href="javascript:void(0)" class="btn yellow"><i class="fas fa-plus"></i> 新規作成</a></div>
 	</section>
-</main>
+	<section class="objects">
+		<div class="pager">
+			<a href="javascript:void(0)" class=""><i class="fas fa-caret-left"></i></a>
+			<a href="javascript:void(0)" class="">1</a>
+			<a href="javascript:void(0)" class="">2</a>
+			<a href="javascript:void(0)" class=" current">3</a>
+			<a href="javascript:void(0)" class="">4</a>
+			<a href="javascript:void(0)" class="">5</a>
+			<a href="javascript:void(0)" class="">6</a>
+			<a href="javascript:void(0)" class="">7</a>
+			<a href="javascript:void(0)" class="">8</a>
+			<a href="javascript:void(0)" class="">9</a>
+			<a href="javascript:void(0)" class="">10</a>
+			<a href="javascript:void(0)" class=""><i class="fas fa-caret-right"></i></a>
+		</div>
+		<div class="datafield">
+			<table>
+				<thead>
+					<th></th>
+					<th>キャンペーン</th>
+					<th>配信</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td class="have_hidden_menu left">
+							<a href="javascript:void(0)">2020_04_webマーケ相談会_リード獲得</a>
+							<div class="hidden_menu"><a href="javascript:void(0)"><i class="fas fa-pen"></i> 編集</a></div>
+						</td>
+						<td><span class="tag">配信中</span><br /><small>2020/04/05～</small></td>
+						<td><span title="配信中は削除できません" class="btn"><i class="fas fa-trash"></i> 削除</span></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td class="have_hidden_menu left">
+							<a href="javascript:void(0)">2020_04_webマーケ相談会_プロモーション資料DL</a>
+							<div class="hidden_menu"><a href="javascript:void(0)"><i class="fas fa-pen"></i> 編集</a></div>
+						</td>
+						<td><span class="tag">配信停止中</span></td>
+						<td>
+							<a href="javascript:void(0)" class="btn denger"><i class="fas fa-trash"></i> 削除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="pager">ここにページャーがほしい</div>
+	</section>
+</section>
 {% endblock %}

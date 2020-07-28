@@ -1,0 +1,288 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<script src="https://kit.fontawesome.com/b6ad2a1f1b.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'css/destyle.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body ng-app="ABapp">
+	<header>
+		<p>ここにlogo</p>
+	</header>
+	<main>
+		<section class="material_form" ng-controller="materialFormCtl" ng-init="init()">
+			<h1>動画素材アップロード</h1>
+			<div class="subtitle">2020_04_webマーケ相談会_リード獲得</div>
+			<form>
+				<section>
+					<div class="materias_settings">
+						<h2>全体設定</h2>
+						<div class="formtable">
+							<div class="row">
+								<div class="clm">
+									<div class="ttl">コーポレートカラー</div>
+									<div class="ctt color_sumpler">
+										<p ng-repeat="color in ads_group.colors_jd"><span style="color:{{color}}"><i class="fas fa-palette"></i></span><input ng-model="color" type="text" placeholder="#000000" /></p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="clm">
+									<div class="ttl">動画テンプレート</div>
+									<div class="ctt color_sumpler">
+										<div class="selectbox">
+											<select ng-model="select_template" ng-on-change="selectMovieTemplate()" ng-options="mtemp.value as mtemp.name for mtemp in movie_templates">
+												<option ng-repeat="">{{mtemp.name}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="materials">
+						<h2>シーン素材</h2>
+						<div class="material_items">
+							<div class="item_upload">
+								<section>
+									<h3>候補素材 - 背景画像</h3>
+									<label class="img_uploader" file-drop-zone on-drop-file="addNewMaterial(file, material_type_id)" drop-material-type="1">
+										<div class="up_image_list">
+											<div>
+												<img src="img/image_02.png" />
+												<span class="image_overray"><button ng-click="fileDelete('move_material_id')">削除</button></span>
+											</div>
+											<div>
+												<img src="img/image_02.png" />
+												<span class="image_overray"><button ng-click="fileDelete('move_material_id')">削除</button></span>
+											</div>
+											<div>
+												<img src="img/image_02.png" />
+												<span class="image_overray"><button ng-click="fileDelete('move_material_id')">削除</button></span>
+											</div>
+										</div>
+										<p>ここにドラッグ＆ドロップ</p>
+										<input type="file" />
+										<input type="hidden" />
+									</label>
+								</section>
+								<section>
+									<h3>候補素材 - サブ画像</h3>
+									<label class="img_uploader" file-drop-zone on-drop-file="addNewMaterial(file, material_type_id)" drop-material-type="2">
+										<div class="up_image_list">
+											<!-- ここに画像が当てはまる -->
+										</div>
+										<p>ここにドラッグ＆ドロップ</p>
+										<input type="file" />
+										<input type="hidden" />
+									</label>
+								</section>
+								<section>
+									<h3>候補素材 - PRテキスト</h3>
+									<div class="text_inputer">
+										<p><input type="text" ng-on-change="updateMaterial(this, 'material_id')" /><button class="denger">削除</button></p>
+										<p><input type="text" /><button class="denger">削除</button></p>
+										<p><input type="text" /><button class="denger">削除</button></p>
+										<div>テキストを追加</button></div>
+									</div>
+								</section>
+							</div>
+							<div class="preview">
+								<canvas id="movie_preview"></canvas>
+								<p><button type="button"><i class="fas fa-sync-alt"></i> 別の組合せ</button></p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</form>
+		</section>
+	</main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.0/angular.min.js"></script>
+	<script>
+		//app
+		var app = angular.module('ABapp', []);
+
+		//controller
+		app.controller('materialFormCtl', function ($scope, $http) {
+
+			//init
+			$scope.ads_group = {
+				'id': 'aaaaaa',
+				'created': '',
+				'modified': '',
+				'colors_jd': '{"0":"#ffaaff", "1":"#aaffff"}',
+
+			}; //こいつも多分jsonや
+
+
+			$scope.movie_materials = {}; //多分jsonになる
+			/*
+			{
+				'material_role_id':{
+					'move_material_id':{
+						move_materialの内容
+					}
+				},
+				'material_role_id':{
+					'move_material_id':{
+						move_materialの内容
+					}
+				},
+				'material_role_id':{
+					'move_material_id':{
+						move_materialの内容
+					}
+				},
+			}
+			
+			*/
+
+
+			$scope.select_template = '';
+			//$scope.movie_templates = {}; //多分jsonだわ
+			$scope.movie_templates = {
+				'0': {
+					'name': '選択してください',
+					'value': '',
+				},
+				'1': {
+					'name': '500×500の動画',
+					'width': 500,
+					'height': 500,
+					'materials': '0,1,2,3,4',
+					'value': '1',
+				},
+				'2': {
+					'name': '500×800の動画',
+					'width': 500,
+					'height': 800,
+					'materials': '0,1,2,3,4',
+					'value': '2',
+				},
+				'3': {
+					'name': '800×500の動画',
+					'width': 800,
+					'height': 500,
+					'materials': '0,1,2,3,4',
+					'value': '3',
+				},
+			};
+
+			var canvas = document.getElementById('movie_preview');
+
+			//init function
+			$scope.init = function () {
+
+				if ($scope.ads_group['colors_jd'] != '') {
+					$scope.ads_group['colors_jd'] = JSON.parse($scope.ads_group['colors_jd']);
+				}
+
+
+				//素材画像を、素材タイプごとの配列に変更する必要がある
+
+				console.log($scope.ads_group);
+			}
+
+			$scope.selectMovieTemplate = function () {
+				//テンプレートが選択されたときの設定
+				console.log($scope.movie_templates[$scope.select_template]);
+				$scope.reflashCanvas();
+			}
+
+
+			//動画素材新規登録
+			$scope.addNewMaterial = function (file, material_type_id) {
+				console.log(file);
+				console.log(material_type_id);
+
+				//httpでファイルをアップロードして、動画素材を登録する
+			}
+
+			//動画素材アップデート
+			$scope.updateMaterial = function (ipt, mm_id) {
+				//動画素材を更新する
+				console.log(mm_id);
+				console.log(ipt);
+
+
+			}
+
+
+			$scope.reflashCanvas = function () {
+
+				//キャンバスのサイズを変更する
+				canvas.width = $scope.movie_templates[$scope.select_template]['width'];
+				canvas.height = $scope.movie_templates[$scope.select_template]['height'];
+
+				ctx = canvas.getContext("2d");
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(canvas.width, canvas.height);
+				ctx.stroke();
+
+
+
+			}
+
+
+
+
+			$scope.fileDelete = function (mm_id) {
+				//対象の動画素材を削除する
+				alert(mm_id);
+			}
+
+
+		});
+
+
+		app.directive('fileDropZone', function () {
+			return {
+				restrict: 'A',
+				scope: {
+					onDropFile: '&',
+					dropMaterialType: '@',
+				},
+				link: function (scope, element, attrs) {
+
+
+					var processDragOverOrEnter = function (event) {
+						console.log('aaaaa');
+						event.stopPropagation();
+						event.preventDefault();
+
+						//背景色変更
+						element.css('background-color:#aaa');
+					}
+
+					var processDrop = function (event) {
+						console.log('bbbbb');
+						event.stopPropagation();
+						event.preventDefault();
+						element.css('background-color:#fff');
+
+						scope.onDropFile({ file: event.dataTransfer.files, material_type_id: scope.dropMaterialType });
+					}
+
+					var processDragLeave = function (event) {
+						console.log('ccccc');
+						//背景色を戻す
+						element.css('background-color:var(--sub-gray)');
+					}
+
+
+					element.bind('dragover', processDragOverOrEnter);
+					element.bind('dragenter', processDragOverOrEnter);
+					element.bind('drop', processDrop);
+					element.bind('dragleave', processDragOverOrEnter);
+
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

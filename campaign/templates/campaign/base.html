@@ -22,8 +22,8 @@
                     <li class="groupitem">
                         <p><i class="fas fa-folder"></i> キャンペーン管理</p>
                         <ul>
-                            <li><a href="javascript:void(0)" id="group_list"><i class="fas fa-list"></i> 一覧</a></li>
-                            <li><a href="javascript:void(0)" id="campaign_form"><i class="fas fa-plus"></i> 新規作成</a></li>
+                            <li><a href="javascript:void(0)" class="group_list"><i class="fas fa-list"></i> 一覧</a></li>
+                            <li><a href="javascript:void(0)" class="campaign_form"><i class="fas fa-plus"></i> 新規作成</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@
             location.reload();
         })
         // 広告グループの表示
-        $(document).on('click', '#group_list', function () {
+        $(document).on('click', '.group_list', function () {
             var csrf = $('input[name=_csrfToken]').val()
             $.ajax({
                 url: "{% url 'campaign_group' %}",
@@ -59,7 +59,7 @@
                 })
         })
         // 広告登録の表示
-        $(document).on('click', '#campaign_form', function () {
+        $(document).on('click', '.campaign_form', function () {
             var csrf = $('input[name=_csrfToken]').val()
             $.ajax({
                 url: "{% url 'campaign_form' %}",

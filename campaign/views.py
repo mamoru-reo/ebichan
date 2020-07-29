@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from .models import Campaign
@@ -39,6 +39,18 @@ def campaign_form(request):
 		Campaign.objects.create(**form.cleaned_data)
 		return redirect('campaign_list')
 	
+	return render(request, 'campaign/form.html', {'form':form})
+
+def campaign_update(request, pk):
+	campaign = get_object_or_404(Campaign, id=pk)
+	form = CampaignForm(request.POST)
+	if form.is_valid():
+		campaign.name = form.cleaned_data['name']
+		campaign.campany_id = form.cleaned_data['campany_id']
+		campaign.save()
+		return redirect('campaign_list')
+	
+	form = CampaignForm({'name':campaign.name, 'campany_id':campaign.campany_id})
 	return render(request, 'campaign/form.html', {'form':form})
 
 

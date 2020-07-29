@@ -3,95 +3,19 @@
 <section>
 	<h1>キャンペーン 登録</h1>
 	<section class="form">
-		<form>
+		<form method="POST">
+			{{ form.errors.message }}
 			<div class="formtable">
 				<div class="row">
 					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">テキストエリア</div>
-						<div class="ctt"><textarea placeholder="placeholder使える？"></textarea></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">セレクト</div>
-						<div class="ctt">
-							<div class="selectbox"><select>
-									<option val="">選択してね</option>
-									<option val="1">おはやし</option>
-									<option val="2">もやもや</option>
-									<option val="3">おっほっほ</option>
-								</select></div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">チェックボックス</div>
-						<div class="ctt">
-							<div class="lablesbox">
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-1" disabled /><label for="select-item-name-1">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-2" checked /><label for="select-item-name-2">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-3" /><label for="select-item-name-3">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-4" /><label for="select-item-name-4">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-4" /><label for="select-item-name-4">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-4" /><label for="select-item-name-4">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-4" /><label for="select-item-name-4">チェックボックス1</label></span>
-								<span class="item"><input type="checkbox" name="001" id="select-item-name-4" /><label for="select-item-name-4">チェックボックス1</label></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">ラジオボタン</div>
-						<div class="ctt">
-							<div class="lablesbox">
-								<span class="item"><input type="radio" name="001" id="radio-item-name-01" /><label for="radio-item-name-01">ラジオボタン1</label></span>
-								<span class="item"><input type="radio" name="001" id="radio-item-name-02" /><label for="radio-item-name-02">ラジオボタン2</label></span>
-								<span class="item"><input type="radio" name="001" id="radio-item-name-03" disabled /><label for="radio-item-name-03">ラジオボタン3</label></span>
-								<span class="item"><input type="radio" name="001" id="radio-item-name-04" /><label for="radio-item-name-04">ラジオボタン4</label></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
-					</div>
-					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
-					</div>
-				</div>
-				<div class="row">
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="clm">
-						<div class="ttl">テキストフォーム</div>
-						<div class="ctt"><input type="text" placeholder="ここはテキストだよ"></div>
+						<div class="ttl">キャンペーン名</div>
+						<div class="ctt">{{ form.name }}</div>
 					</div>
 				</div>
 			</div>
-			<div class="formsend"><button class="yellow">登録</button><button class="yellow" disabled>登録</button></div>
+			{{ form.campany_id }}
+			{% csrf_token %}
+			<div class="formsend"><button class="yellow">登録</button></div>
 		</form>
 	</section>
 </section>

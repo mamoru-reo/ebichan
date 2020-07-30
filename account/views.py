@@ -3,7 +3,7 @@ from django.contrib.auth.views import(LoginView, LogoutView, )
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, Tk2appcdForm
 # ログインパスを通す場合に必要
 from django.contrib.auth.decorators import login_required
 from .models import Campany, User
@@ -24,7 +24,20 @@ class Logout(LoginRequiredMixin, LogoutView):
   template_name = 'registration/login.html'
 
 
+
 import re
+#tiktokのAPI設定ページ
+def api_tk2(request):
+	company = Campany.objects.get(pk=request.user.campany_id)
+	
+	form = Tk2appcdForm(request.POST or None, initial={'tk2_app_cd':company.tk2_app_cd, 'tk2_app_sec':company.tk2_app_sec})
+	if form.is_valid():
+		company.tk2_app_cd = form.cleaned_data['tk2_app_cd']
+		company.tk2_app_sec = form.cleaned_data['tk2_app_sec']
+		company.save()
+		return redirect('campaign_list')
+	
+	return render(request, 'user_settings/tk2.html', {'form':form})
 
 
 def has_digit(text):

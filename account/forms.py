@@ -37,3 +37,13 @@ class LoginForm(AuthenticationForm):
     for field in self.fields.values():
       field.widget.attrs['class'] = 'form-control'
       field.widget.attrs['placeholder'] = field.label
+
+
+#TiktokのAPI連携設定フォーム
+class Tk2appcdForm(forms.Form):
+	tk2_app_cd = forms.CharField(widget=forms.TextInput(
+		attrs={'placeholder': 'コピー＆ペーストしてください'}))
+	tk2_app_sec = forms.CharField(widget=forms.TextInput(
+		attrs={'placeholder': 'コピー＆ペーストしてください'}))
+	
+	

@@ -15,7 +15,10 @@
 			</div>
 			{{ form.campany_id }}
 			{% csrf_token %}
-			<div class="formsend"><button class="yellow">登録</button></div>
+			<div class="formsend">
+				<a href="{% url 'campaign_list' %}" class="btn cancel">キャンセル</a>
+				<button class="yellow">登録</button>
+			</div>
 		</form>
 	</section>
 </section>

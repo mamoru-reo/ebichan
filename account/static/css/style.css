@@ -17,12 +17,20 @@
 	
 	/* デコレーション数値 */
 	--deco-radius:0.25em;
+	--transition-values:all 0.3s ease 0s;
 	
 	/* レイアウト数値 */
 	--header-height:30px;
 	--side-menu-width:12em;
 	--mate-sett-height:230px;
 }
+
+/* アニメーション */
+a,
+button {
+	transition:var(--transition-values);
+}
+
 
 /*リンク*/
 a{
@@ -60,7 +68,11 @@ button.yellow{
 	border-color:var(--sub-yellow);
 }
 
-
+a.btn.cancel,
+button.cancel{
+	background:var(--sub-dark);
+	border-color:var(--sub-dark);
+}
 
 
 a.btn:hover,
@@ -71,6 +83,7 @@ button:hover{
 }
 
 a.btn.denger:hover, button.denger:hover{ color:var(--denger-red); }
+a.btn.cancel:hover, button.cancel:hover{ color:var(--sub-dark); }
 a.btn.yellow:hover, button.yellow:hover{ color:var(--sub-yellow); }
 
 
@@ -334,7 +347,71 @@ header{
 	height:var(--header-height);
 	background:var(--main-color);
 	color:#fff;
+	display:flex;
+	padding-right:10px;
+	padding-left:10px;
 }
+header > ul{
+	display:flex;
+	margin-right:0;
+	margin-left:auto;
+	align-items:center;
+}
+
+header > ul > li{
+	position:relative;
+	margin-left:20px;
+}
+header .header-menu-switch{
+	font-size:0;
+	width:0; height:0;
+	line-height:0;
+	position:absolute;
+}
+
+header > ul li a,
+header > ul li label{
+	color:#fff;
+	display:block;
+}
+header .header-menu-switch + ul{
+	opacity:0;
+	display:none;
+	position:absolute;
+	right:0;
+	border-radius:var(--deco-radius);
+	border:var(--main-color) solid 1px;
+	background:#fff;
+	width:auto;
+	min-width:10em;
+	/* transition:var(--transition-values); */
+	transition:all 1.5s ease 0s;
+}
+header .header-menu-switch + ul li{
+	border-bottom:var(--disabled-gray-light) solid 1px;
+	color:var(--main-color);
+}
+header .header-menu-switch + ul li:last-of-type{
+	border-bottom:none;
+}
+
+
+header .header-menu-switch + ul li a{
+	color:var(--main-color);
+	padding:10px;
+}
+header .header-menu-switch + ul li a:hover{
+	color:#fff;
+	background:var(--main-color);
+	text-decoration:none;
+}
+
+
+header .header-menu-switch:checked + ul{
+	display:block; opacity:1;
+}
+
+
 
 main{
 	display:flex;
@@ -369,6 +446,7 @@ div{
 .sidemenu ul > li > p{
 	display:block;
 	padding:0.8em 0.5em;
+	text-decoration:none;
 }
 
 
@@ -387,13 +465,16 @@ div{
 /* テーブルの中のhideメニュー */
 .have_hidden_menu > .hidden_menu{
 	visibility:hidden;
+	opacity:0;
 	margin-bottom:0;
 	margin-top:0.5em;
 	font-size:90%;
+	transition:var(--transition-values);
 }
 
 .have_hidden_menu:hover > .hidden_menu{
 	visibility:visible;
+	opacity:1;
 }
 
 .objects > div{

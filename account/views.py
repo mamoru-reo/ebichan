@@ -52,6 +52,7 @@ def registration_user(request):
   if request.method == 'POST':
     registration_form = RegistrationForm(request.POST)
     print(request.POST)
+    company_name = request.POST['company_name']
     username = request.POST['username']
     email = request.POST['email']
     password = request.POST['password']
@@ -137,7 +138,7 @@ def registration_user(request):
 
     # Campany登録処理
     campany = Campany.objects.create(
-        address=address + pref + city + city2, tell=request.POST.get('tell')
+        name=company_name, address=address + pref + city + city2, tell=request.POST.get('tell')
     )
 
     # ユーザー登録処理

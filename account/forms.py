@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class RegistrationForm(forms.Form):
+  company_name = forms.CharField(widget=forms.TextInput(
+      attrs={'placeholder': '会社名・組織名'}))
   username = forms.CharField(widget=forms.TextInput(
       attrs={'placeholder': 'ユーザネーム'}))
   address = forms.CharField(max_length=8, widget=forms.TextInput(

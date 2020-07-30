@@ -6,17 +6,18 @@ from django.utils import timezone
 
 
 class Campany(models.Model):
-  tk2_app_cd = models.TextField()
-  address = models.TextField()
-  tell = models.TextField()
-  email = models.EmailField()
-  tk2_app_sec = models.TextField()
-  created = models.DateTimeField(default=timezone.now)
-  modified = models.DateTimeField(blank=True, null=True)
+	name = models.TextField()
+	tk2_app_cd = models.TextField()
+	address = models.TextField()
+	tell = models.TextField()
+	email = models.EmailField()
+	tk2_app_sec = models.TextField()
+	created = models.DateTimeField(default=timezone.now)
+	modified = models.DateTimeField(blank=True, null=True)
 
-  def publish(self):
-    self.modified = timezone.now()
-    self.save()
+	def publish(self):
+		self.modified = timezone.now()
+		self.save()
 
 
 class User(AbstractUser):

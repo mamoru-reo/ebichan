@@ -54,6 +54,11 @@ def campaign_update(request, pk):
 	return render(request, 'campaign/form.html', {'form':form})
 
 
+def campaign_delete(request, pk):
+	Campaign.objects.filter(id=pk).delete()
+	
+	return redirect('campaign_list')
+
 def campaign_group(request):
 	return render(request, 'campaign/group_list.html', {})
 

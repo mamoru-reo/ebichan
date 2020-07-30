@@ -60,7 +60,7 @@ class Ads_status(models.Model):
     self.save()
 
 
-class Material_search(models.Model):
+class Material_choose_type(models.Model):
   name = models.CharField(max_length=50)
   snum = models.IntegerField()
   created = models.DateTimeField(default=timezone.now)
@@ -69,6 +69,8 @@ class Material_search(models.Model):
   def publish(self):
     self.modified = timezone.now()
     self.save()
+
+
 
 
 def __str__(self):

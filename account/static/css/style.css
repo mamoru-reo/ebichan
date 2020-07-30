@@ -11,6 +11,7 @@
 	--sub-dark:#303637;
 	--btn-font-color:#fff;
 	--disabled-gray:#c6ccce;
+	--disabled-gray-light:#daedef;
 	
 	--denger-red:#ff828a;
 	
@@ -244,6 +245,13 @@ table td{
 	line-height:2em;
 	background:var(--main-light);
 	border:var(--main-light) solid 2px;
+	margin-right:0.25em;
+}
+
+.pager span{
+	background:var(--disabled-gray-light);
+	border-color:var(--disabled-gray-light);
+	color:var(--disabled-gray);
 }
 
 .pager a:hover{
@@ -254,6 +262,7 @@ table td{
 .pager .current{
 	background:var(--btn-font-color);
 	color:var(--main-color);
+	border-color:var(--main-light);
 }
 
 

@@ -24,10 +24,13 @@
 						<td>{{ campaign.id }}</td>
 						<td class="have_hidden_menu left">
 							<a href="javascript:void(0)">{{ campaign.name }}</a>
-							<div class="hidden_menu"><a href="javascript:void(0)"><i class="fas fa-pen"></i> 編集</a></div>
+							<div class="hidden_menu"><a href="{% url 'campaign_update' campaign.id %}"><i class="fas fa-pen"></i> 編集</a></div>
 						</td>
 						<td><span class="tag">配信中</span><br /><small>2020/04/05～</small></td>
-						<td><span title="配信中は削除できません" class="btn"><i class="fas fa-trash"></i> 削除</span></td>
+						<td>
+							<!-- 削除していかん時はこんな感じで<span title="配信中は削除できません" class="btn"><i class="fas fa-trash"></i> 削除</span> -->
+							<a href="{% url 'campaign_delete' campaign.id %}" onclick="return confirm('本当に{{ campagin.name }}を削除しますか？')" class="btn denger"><i class="fas fa-trash"></i> 削除</a>
+						</td>
 					</tr>
 					{% endfor %}
 					<!-- tr>

@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class RegistrationForm(forms.Form):
+  company_name = forms.CharField(widget=forms.TextInput(
+      attrs={'placeholder': '会社名・組織名'}))
   username = forms.CharField(widget=forms.TextInput(
       attrs={'placeholder': 'ユーザネーム'}))
   address = forms.CharField(max_length=8, widget=forms.TextInput(
@@ -37,3 +39,13 @@ class LoginForm(AuthenticationForm):
     for field in self.fields.values():
       field.widget.attrs['class'] = 'form-control'
       field.widget.attrs['placeholder'] = field.label
+
+
+#TiktokのAPI連携設定フォーム
+class Tk2appcdForm(forms.Form):
+	tk2_app_cd = forms.CharField(widget=forms.TextInput(
+		attrs={'placeholder': 'コピー＆ペーストしてください'}))
+	tk2_app_sec = forms.CharField(widget=forms.TextInput(
+		attrs={'placeholder': 'コピー＆ペーストしてください'}))
+	
+	

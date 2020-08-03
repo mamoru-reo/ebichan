@@ -1,0 +1,30 @@
+{% extends 'campaign/base.html' %}
+{% block content %}
+<section>
+	<h1>TikTok　API設定</h1>
+	<section class="form">
+		<form method="POST">
+			{{ form.errors.message }}
+			<div class="formtable">
+				<div class="row">
+					<div class="clm">
+						<div class="ttl">APP ID</div>
+						<div class="ctt">{{ form.tk2_app_cd }}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="clm">
+						<div class="ttl">APP シークレット</div>
+						<div class="ctt">{{ form.tk2_app_sec }}</div>
+					</div>
+				</div>
+			</div>
+			{% csrf_token %}
+			<div class="formsend">
+				<a href="{% url 'campaign_list' %}" class="btn cancel">キャンセル</a>
+				<button class="yellow">登録</button>
+			</div>
+		</form>
+	</section>
+</section>
+{% endblock %}

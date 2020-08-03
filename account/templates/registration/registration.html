@@ -12,6 +12,12 @@
             <span class="p-country-name" style="display:none;">Japan</span>
             {% csrf_token %}
             <div class="form-item">
+                {{registration_form.company_name}}
+                {% if company_name_err %}
+                <p class="error">{{company_name_err}}</p>
+                {% endif %}
+            </div>
+            <div class="form-item">
                 {{registration_form.username}}
                 {% if username_err %}
                 <p class="error">{{username_err}}</p>

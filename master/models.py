@@ -59,6 +59,17 @@ class Ads_status(models.Model):
     self.modified = timezone.now()
     self.save()
 
+class Ads_group_status(models.Model):
+  name = models.CharField(max_length=50)
+  snum = models.IntegerField()
+  created = models.DateTimeField(default=timezone.now)
+  modified = models.DateTimeField(blank=True, null=True)
+  
+  def publish(self):
+    self.modified = timezone.now()
+    self.save()
+
+
 
 class Material_choose_type(models.Model):
   name = models.CharField(max_length=50)

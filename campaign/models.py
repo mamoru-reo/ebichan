@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from account.models import Campany
-from master.models import Movie_template, Ads_status
+from master.models import Movie_template, Ads_status, Ads_group_status
 import uuid
 
 # Create your models here.
@@ -29,6 +29,9 @@ class Ads_group(models.Model):
   nonstream_dt = models.DateField(blank=True, null=True)  # 配信停止日
   created = models.DateTimeField(default=timezone.now)
   modified = models.DateTimeField(blank=True, null=True)
+  ads_group_status = models.ForeignKey(
+    Ads_group_status, on_delete=models.CASCADE, related_name='ads_group'
+  )
   campaign = models.ForeignKey(
       Campaign, on_delete=models.CASCADE, related_name='ads_group'
   )

@@ -96,6 +96,14 @@
 		}
 	},
 	{
+		"model":"master.Ads_status",
+		"pk":"4",
+		"fields":{
+			"name":"配信停止（派生決定）",
+			"snum":40
+		}
+	},
+	{
 		"model":"master.Ads_group_status",
 		"pk":"1",
 		"fields":{

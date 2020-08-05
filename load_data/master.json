@@ -75,7 +75,7 @@
 		"model":"master.Ads_status",
 		"pk":"1",
 		"fields":{
-			"name":"配信停止",
+			"name":"未配信",
 			"snum":10
 		}
 	},
@@ -85,6 +85,14 @@
 		"fields":{
 			"name":"配信中",
 			"snum":20
+		}
+	},
+	{
+		"model":"master.Ads_status",
+		"pk":"3",
+		"fields":{
+			"name":"配信停止",
+			"snum":30
 		}
 	},
 	{

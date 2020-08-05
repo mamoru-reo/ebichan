@@ -50,6 +50,7 @@ class Ads_item(models.Model):
   nonstream_dt = models.DateField(blank=True, null=True)  # 配信停止日
   created = models.DateTimeField(default=timezone.now)
   modified = models.DateTimeField(blank=True, null=True)
+  parent_ads_item_cd = models.TextField(blank=True, null=True) #派生元の広告データ
   ads_group = models.ForeignKey(
       Ads_group, related_name='ads_item', on_delete=models.CASCADE)
   movie_template = models.OneToOneField(
